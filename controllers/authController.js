@@ -1,36 +1,8 @@
-/*const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-
-// SIGNUP
-exports.signup = async (req, res) => {
-  try {
-    const { name, email, password, role } = req.body;
-
-    // hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const user = await User.create({
-      name,
-      email,
-      password: hashedPassword,
-      role
-    });
-
-    res.json({
-      message: "User created successfully",
-      user
-    });
-
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};*/
-
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken"); // 👈 ADD THIS
+const jwt = require("jsonwebtoken"); 
 
-// SIGNUP (no change)
+// SIGNUP 
 exports.signup = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
@@ -55,7 +27,7 @@ exports.signup = async (req, res) => {
 };
 
 
-// LOGIN (👇 ADD THIS FULL BLOCK)
+// LOGIN 
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
